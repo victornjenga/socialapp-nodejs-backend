@@ -20,11 +20,11 @@ mongoose
   .then(() => console.log("connected to db successfully"))
   .catch((err) => console.log(err));
 
-  app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 
-// app.get("/", (req, res) => {
-//   res.send("This is the Homepage");
-// });
+app.get("/", (req, res) => {
+  res.send("This is the Homepage");
+});
 
 //middleware
 app.use(express.json());
@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    cb(null, req.body.name);   
+    cb(null, req.body.name);
   },
 });
 
